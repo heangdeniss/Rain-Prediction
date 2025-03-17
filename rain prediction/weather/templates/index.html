@@ -1,0 +1,393 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <!--Cambodia map add-->
+    <!-- Leaflet.js CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <title>Rain Prediction and Servere Weather alert</title>
+</head>
+<body>
+ <!--Header-->
+<section id="home">
+  <div class="container">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom fixed-top bg-dark">
+          <div class="col-md-3 mb-2 mb-md-0">
+              <img src="../static/images/cloud-drizzle-fill.svg" alt="Weather logo" height="40" width="40"> 
+              <span class="text-light">Weather Forecast</span>
+          </div>
+
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="#home" class="nav-link px-2 text-light">Home</a></li>
+              <li><a href="#features" class="nav-link px-2 text-light">Features</a></li>
+              <li><a href="#pricing" class="nav-link px-2 text-light">Pricing</a></li>
+              <li><a href="#faq" class="nav-link px-2 text-light">FAQs</a></li>
+              <li><a href="#about" class="nav-link px-2 text-light">About</a></li>
+          </ul>
+      </header>
+      <div>
+  </div>
+</section>
+
+    <!--Heroes-->
+    <section class="hero-section pt-5">
+      <div class="container">
+          <div class="p-5 text-center bg-image rounded-3" style="
+            background-image: url('../static/images/wp7188287.webp');
+            height: 1000px;
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+          ">
+              <div class="mask" style="background-color: white(0, 0, 0, 0.6);">
+                  <div class="d-flex justify-content-center align-items-center h-100">
+                      <div class="text-white">
+                          <h1 class="mb-3">Rain Prediction and Severe Weather Alerter</h1>
+                          <h4 class="mb-3">This Prediction only works in Cambodia.</h4>
+                          <a data-mdb-ripple-init="" class="btn btn-outline-light btn-lg" href="#" role="button">Make Prediction here</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+
+
+    <!--Feature Section-->
+    
+    <section id="Feature">
+        <div class="container">
+    <div class="container px-4 py-5" id="featured-3">
+        <h2 class="pb-2 border-bottom">Our Features</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+              <img src="../static/images/cloud-drizzle.svg" alt="Cloud feature" height="30" width="30">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Accurate Rain Prediction</h3>
+            <p>Get real-time and precise rain predictions to plan your day efficiently.</p>
+          </div>
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+              <img src="../static/images/exclamation-circle.svg" alt="alert logo" height="30" width="30">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Severe Weather Alerts</h3>
+            <p>Receive instant alerts for extreme weather conditions in your location.</p>
+          </div>
+          <div class="feature col">
+            <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
+              <img src="../static/images/geo.svg" alt="geo logo" height="30" width="30">
+            </div>
+            <h3 class="fs-2 text-body-emphasis">Location-Based Forecast</h3>
+            <p>Weather updates are tailored specifically to your area for accuracy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <!--Cambodia Map-->
+    <section>
+
+        <h2>🌦️ Real-Time Weather Map of Cambodia</h2>
+    <div id="map"></div>
+
+    <script>
+        // Initialize the map centered on Cambodia
+        var map = L.map('map').setView([12.5657, 104.9910], 7);
+
+        // Use high-quality Google Hybrid Map
+        L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            attribution: 'Map data &copy; Google'
+        }).addTo(map);
+
+        // OpenWeatherMap API key (Replace with your own key)
+        var apiKey = 'YOUR_OPENWEATHERMAP_API_KEY';
+
+        // List of cities in Cambodia with coordinates
+        var cities = [
+            { name: "Phnom Penh", lat: 11.5564, lon: 104.9282 },
+            { name: "Siem Reap", lat: 13.3671, lon: 103.8448 },
+            { name: "Battambang", lat: 13.0957, lon: 103.2022 },
+            { name: "Sihanoukville", lat: 10.6093, lon: 103.5296 },
+            { name: "Kampong Cham", lat: 12.0000, lon: 105.4500 },
+            { name: "Poipet", lat: 13.6589, lon: 102.5667 }
+        ];
+
+        var markers = [];
+
+        // Function to get weather for each city
+        function getWeather(city) {
+            var url = `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}&units=metric`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    var temp = data.main.temp;
+                    var weather = data.weather[0].description;
+                    var humidity = data.main.humidity;
+                    var windSpeed = data.wind.speed;
+                    var icon = data.weather[0].icon;
+                    var iconUrl = `https://openweathermap.org/img/wn/${icon}.png`;
+
+                    // Check if marker exists, update it; otherwise, create a new one
+                    if (markers[city.name]) {
+                        markers[city.name].setPopupContent(
+                            `<b>${city.name}</b><br>
+                             <img src="${iconUrl}" alt="Weather icon"><br>
+                             🌡️ Temperature: ${temp}°C<br>
+                             🌬️ Wind Speed: ${windSpeed} m/s<br>
+                             💧 Humidity: ${humidity}%<br>
+                             ☁️ Condition: ${weather}`
+                        );
+                    } else {
+                        markers[city.name] = L.marker([city.lat, city.lon]).addTo(map)
+                            .bindPopup(
+                                `<b>${city.name}</b><br>
+                                 <img src="${iconUrl}" alt="Weather icon"><br>
+                                 🌡️ Temperature: ${temp}°C<br>
+                                 🌬️ Wind Speed: ${windSpeed} m/s<br>
+                                 💧 Humidity: ${humidity}%<br>
+                                 ☁️ Condition: ${weather}`
+                            );
+                    }
+                })
+                .catch(error => console.error('Error fetching weather data:', error));
+        }
+
+        // Fetch weather for all cities initially
+        cities.forEach(getWeather);
+
+        // Auto-refresh every 10 minutes
+        setInterval(() => {
+            cities.forEach(getWeather);
+        }, 600000); // 600,000 ms = 10 minutes
+
+    </script>
+    </section>
+
+    <hr>
+
+    <!-- Pricing -->
+ <section id="pricing">
+
+    <div class="container">
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h2 class="display-4 fw-normal">Plan for Support us.</h2>
+        <p class="fs-5 text-body-secondary">Simple and affordable price plans.
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Basic</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>✅ Free weather updates (every 6 hours)</li>
+                <li>✅ Access to general forecasts</li>
+                <li>❌ No severe weather alerts</li>
+                <li>❌ Location-based predictions</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-outline-white">Sign up for free</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Pro</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>✅ Real-time weather updates</li>
+                <li>✅ Severe weather alerts</li>
+                <li>✅ Location-based predictions</li>
+                <li>✅ Access to interactive weather maps</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-dark">Get started</button>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm border-dark">
+            <div class="card-header py-3 text-bg-dark border-dark">
+              <h4 class="my-0 fw-normal">Premium</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>✅ Everything in Pro</li>
+                <li>✅ Unlimited API access</li>
+                <li>✅ 7-day advanced forecasts</li>
+                <li>✅ Custom alerts for businesses</li>
+              </ul>
+              <button type="button" class="w-100 btn btn-lg btn-dark">Contact us</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section> 
+
+  <hr>
+
+  <section id="faq" class="container my-5">
+    <h2 class="text-center text-light mb-4">❓ Frequently Asked Questions</h2>
+    <div class="accordion bg-black" id="faqAccordion">
+
+        <!-- Question 1 -->
+        <div class="accordion-item bg-dark border-0">
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    How accurate is the weather prediction?
+                </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light bg-black">
+                    Our weather predictions use real-time data from OpenWeatherMap and advanced AI models, ensuring high accuracy. However, forecasts may vary based on sudden climate changes.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="accordion-item bg-dark border-0">
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Is the service free to use?
+                </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light bg-black">
+                    Yes! We offer a free basic plan with daily weather updates. However, premium plans include advanced features like severe weather alerts and real-time updates.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="accordion-item bg-dark border-0">
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Does this service work outside of Cambodia?
+                </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light bg-black">
+                    Currently, our service is optimized for Cambodia. We are working on expanding coverage to other Southeast Asian countries soon.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="accordion-item bg-dark border-0">
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    How often is the weather data updated?
+                </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light bg-black">
+                    The free plan updates every 6 hours, while premium users get real-time updates every 10 minutes.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="accordion-item bg-dark border-0">
+            <h2 class="accordion-header">
+                <button class="accordion-button bg-secondary text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    Can businesses integrate this weather data into their services?
+                </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body text-light bg-black">
+                    Yes! Our premium plan provides API access for businesses that need real-time weather data for logistics, agriculture, or travel services.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<hr>
+
+<section id="about" class="container my-5">
+    <h2 class="text-center text-light">🌦️ About Us</h2>
+    <p class="text-center text-muted">
+        Welcome to **Weather Forecast**, your trusted source for real-time and accurate weather predictions in Cambodia. 
+        Our platform leverages cutting-edge technology, AI-driven analytics, and meteorological data to provide reliable forecasts 
+        to individuals, businesses, and communities.
+    </p>
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="card bg-dark text-light p-4">
+                <h4>🌍 Our Mission</h4>
+                <p>To provide accurate, real-time weather updates that help people plan their day efficiently.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark text-light p-4">
+                <h4>⚡ What We Offer</h4>
+                <p>Live weather tracking, severe weather alerts, and personalized forecasts tailored for Cambodia.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark text-light p-4">
+                <h4>🚀 Our Vision</h4>
+                <p>To become the leading weather forecasting platform in Southeast Asia.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Footer-->
+<section>
+    <section id="footer">
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+              <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                  <svg class="bi" width="35" height="30"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary">© 2025 AMS ITC, Inc</span>
+              </div>
+          
+              <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3">
+                    <a class="text-body-secondary" href="https://twitter.com">
+                        <img src="../static/images/twitter-x.svg" alt="Twitter" height="30" width="20">
+                    </a>
+                </li>
+                <li class="ms-3">
+                    <a class="text-body-secondary" href="https://instagram.com">
+                        <img src="../static/images/instagram.svg" alt="IG" height="30" width="20">
+                    </a>
+                </li>
+                <li class="ms-3">
+                    <a class="text-body-secondary" href="https://facebook.com">
+                        <img src="../static/images/facebook.svg" alt="FB" height="30" width="20">
+                    </a>
+                </li>
+            </ul>
+            
+            </footer>
+          </div>
+    </section>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
