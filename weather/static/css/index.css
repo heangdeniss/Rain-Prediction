@@ -1,0 +1,30 @@
+
+.icon-square {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+  }
+
+.feature-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: .75rem;
+  }
+
+body {
+    background-color: #181a1b;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+#map {
+    height: 600px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+#home{
+  position: fixed;
+}
