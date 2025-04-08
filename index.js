@@ -23,7 +23,10 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.get("/", (req, res) => {
     res.render("index.ejs");
 })
-
+// display services
+app.get("/services", (req, res) => {
+    res.render("services.ejs");
+});
 // Read messages from file
 function readMessages() {
     try {
