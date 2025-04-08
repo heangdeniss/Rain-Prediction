@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import nodemailer from 'nodemailer';
 
 const app = express();
 const port = 5000; 
@@ -123,14 +124,13 @@ function saveUsers(users) {
     fs.writeFileSync(userFile, JSON.stringify(users, null, 2));
 }
 
-// render login EJS file
 app.get("/login", (req, res) => {
     res.render("login.ejs", {
         email: req.query.email || '',
         message: req.query.message || ''
     });
 });
-// handle login 
+
 app.post("/login", (req, res) => {
     const { email, password } = req.body;
     const users = readUsers();
@@ -145,6 +145,66 @@ app.post("/login", (req, res) => {
     }
 });
 
+app.get("/forgot-password", (req, res) => {
+    const message = req.query.message || '';  // Retrieve message if any
+    res.render("forgot-password.ejs", { message: message });
+});
+
+app.post("/forgot-password", (req, res) => {
+    const { email } = req.body;
+    const users = readUsers();
+
+    if (!users[email]) {
+        return res.redirect(`/forgot-password?message=Email not found.`);
+    }
+
+    const verificationCode = Math.floor(1000 + Math.random() * 9000);
+    users[email].verificationCode = verificationCode;
+    saveUsers(users);
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'your-email@gmail.com',
+            pass: 'your-email-password'
+        }
+    });
+
+    let mailOptions = {
+        from: 'your-email@gmail.com',
+        to: email,
+        subject: 'Password Reset Code',
+        text: `Your verification code is: ${verificationCode}`
+    };
+
+    transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+            console.log(err);
+            return res.redirect(`/forgot-password?message=Error sending email.`);
+        }
+        res.redirect(`/verify-code?email=${email}`);
+    });
+});
+
+app.get("/forgot-password/verify-code", (req, res) => {
+    const { email } = req.query;
+    res.render("verify-code.ejs", { email: email });
+});
+
+app.post("/verify-code", (req, res) => {
+    const { email, verificationCode, newPassword } = req.body;
+    const users = readUsers();
+
+    if (users[email] && users[email].verificationCode == verificationCode) {
+        // Update the password
+        users[email].password = newPassword;
+        delete users[email].verificationCode; // Remove the verification code
+        saveUsers(users);
+        res.redirect("/login");
+    } else {
+        res.redirect(`/verify-code?email=${email}&message=Invalid verification code.`);
+    }
+});
 
 
 
