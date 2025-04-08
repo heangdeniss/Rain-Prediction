@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rain and Server Weather Prediction</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <script defer src="/js/index1.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <a href="https://www.google.com.kh/maps/place/...">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/renpy/renpy-original.svg" alt="Logo" height="35" width="50">
+          Forecast
+        </a>
+      </div>
+      <ul class="links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="#" onclick="confirmLogout()">Log out</a></li>
+      </ul>
+      <a href="#" class="action-btn">Get Started</a>
+      <div class="toggle_btn">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+      <div class="dropdown_menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="#">Get Started</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <h1>Stay Ahead of the Storm in Cambodia.</h1>
+    <p>Accurate, real-time weather predictions to help you prepare for rain, storms, and severe conditions.</p>
+    <div class="cta-buttons">
+      <a href="#" class="action-btn">Get Your Forecast Now</a>
+      <a href="#" class="action-btn">Learn More</a>
+    </div>
+
+    <div class="user-info">
+      <p>Welcome, <strong><%= email %></strong></p>
+    </div>
+  </section>
+
+</body>
+</html>

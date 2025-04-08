@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/contact.css">
+    <title>Contact Us</title>
+</head>
+<body>
+    <section id="contact">
+        <h1>Contact Us</h1>
+        <p>Have questions? Reach out to us, and we'll get back to you as soon as possible.</p>
+        
+        <!-- Display Message -->
+        <% if (message) { %>
+            <div class="success-message">
+                <p><strong><%= message %></strong></p>
+            </div>
+        <% } %>
+
+        <% if (name) { %>
+            <div class="submitted-name">
+                <p><strong>Thanks you: </strong><%= name %></p>
+            </div>
+        <% } %>
+
+        <!-- Contact Form -->
+        <form action="/contact" method="POST" class="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required value="<%= name %>" />
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="action-btn">Send Message</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,87 @@
+#register {
+    background-color: #111;
+    color: #fff;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+#register h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#register p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-form .form-group label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.contact-form button.action-btn {
+    background-color: orange;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button.action-btn:hover {
+    background-color: #e65100;
+}
+
+.success-message {
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    color: white;
+}
+
+.error-message {
+    background-color: #d9534f;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    color: white;
+}
+
+body {
+    background-color: #111;
+}
