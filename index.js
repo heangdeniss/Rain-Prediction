@@ -206,6 +206,28 @@ app.post("/verify-code", (req, res) => {
     }
 });
 
+/// Logistic regression prediction not yet decision
+const intercept = 2.21196444;
+const theta_values = [
+    0.45292243, // feelslikemax
+    6.03714303 , //precipcover
+    -0.2343574, // sealevelpressure
+    0.7022954, // severrisk
+    -0.70273582, // years
+    -0.1521306, // month
+    -0.27950338, // month_sin
+    -0.01409775, // month_cos
+    -0.40991524, // sunrise_hour
+]
+const mean_values = [
+    -0.15077329,  0.19360781,  0.04482691, -0.29783599, -0.29157175,  0.04252088,
+  0.03695315, -0.00099732,  0.37357631,
+]
+const std_values = [
+    0.81198844, 0.67704837, 0.66623016, 0.83351691, 0.66249823, 0.57852318,
+ 0.51720325, 0.51675202, 0.48375309,
+]
+
 
 
 
