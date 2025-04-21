@@ -7,7 +7,7 @@
     "name": "HEANG Denis",
     "password": "HEANGDENIS$",
     "registrationDate": "2025-04-08T09:03:19.780Z",
-    "verificationCode": 6321
+    "verificationCode": 9027
   },
   "deniskh9999@gmail.com": {
     "name": "meliodas",
@@ -19,5 +19,11 @@
     "name": "Souyu",
     "password": "souyusouyu$",
     "registrationDate": "2025-04-09T06:30:21.624Z"
+  },
+  "ams@gmail.com": {
+    "name": "amsams",
+    "password": "amsamsams$",
+    "registrationDate": "2025-04-20T13:47:34.021Z",
+    "verificationCode": 3925
   }
 }

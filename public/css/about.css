@@ -1,0 +1,26 @@
+body{
+    background: linear-gradient(to bottom, #000000, #333333);
+}
+
+.first h1 {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+.first p{
+    color: white;
+    text-align: left;
+    margin: auto;
+    padding-right: 50%;
+    padding-top: 10px;
+    gap: 10px;
+    font-size: 1rem;
+}
+.first img{
+    width: 80%;
+    height: 700px;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

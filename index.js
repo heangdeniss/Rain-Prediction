@@ -186,7 +186,7 @@ app.post("/forgot-password", (req, res) => {
     });
 });
 
-app.get("/forgot-password/verify-code", (req, res) => {
+app.get("/verify-code", (req, res) => {
     const { email } = req.query;
     res.render("verify-code.ejs", { email: email });
 });
@@ -204,6 +204,10 @@ app.post("/verify-code", (req, res) => {
     } else {
         res.redirect(`/verify-code?email=${email}&message=Invalid verification code.`);
     }
+});
+
+app.get("/about", (req, res) => {
+    res.render("about.ejs");
 });
 
 /// Logistic regression prediction not yet decision
