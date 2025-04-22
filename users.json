@@ -25,5 +25,11 @@
     "password": "amsamsams$",
     "registrationDate": "2025-04-20T13:47:34.021Z",
     "verificationCode": 3925
+  },
+  "lyhor@gmail.com": {
+    "name": "Lyhor",
+    "password": "12345678$",
+    "registrationDate": "2025-04-22T06:44:18.685Z",
+    "verificationCode": 6658
   }
 }

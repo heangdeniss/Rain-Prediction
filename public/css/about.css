@@ -1,26 +1,116 @@
-body{
+/* About Us Page Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
     background: linear-gradient(to bottom, #000000, #333333);
+    color: #fff;
 }
 
-.first h1 {
-    font-size: 2rem;
+/* Container for the first section */
+.first {
     text-align: center;
-    font-weight: bold;
-    color: white;
+    padding: 50px 20px;
 }
-.first p{
-    color: white;
-    text-align: left;
-    margin: auto;
-    padding-right: 50%;
-    padding-top: 10px;
-    gap: 10px;
-    font-size: 1rem;
+
+/* Heading Styles */
+.first h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #FFD700;  /* Gold color for the heading */
 }
-.first img{
+
+/* Image Styles */
+.first img {
     width: 80%;
-    height: 700px;
-    margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    max-width: 600px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Paragraph Styles */
+.first p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 30px auto;
+    line-height: 1.6;
+    color: #dcdcdc; /* Light gray text */
+}
+
+/* Second section */
+.second {
+    background-color: #2C3E50;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* If you add more content here, you can style it like this */
+.second p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 30px auto;
+    color: #ecf0f1; /* Light color text */
+}
+
+        /* Our Values Section */
+        .values {
+            background: #555; /* Slightly darker grey */
+            padding: 3rem 1rem;
+            text-align: center;
+            color: white;
+        }
+
+        .values h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff914d;
+        }
+
+        .values p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        /* Our Team Section */
+        .team-section {
+            padding: 3rem 1rem;
+            background: #444; /* Matches About Section */
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff914d;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            width: 200px;
+        }
+
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-member h3 {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+        }

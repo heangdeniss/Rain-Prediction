@@ -232,6 +232,36 @@ const std_values = [
  0.51720325, 0.51675202, 0.48375309,
 ]
 
+app.post("/predict", (req, res) => {
+    const input_features = [
+        parseFloat(req.body.feelslikemax),
+        parseFloat(req.body.precipcover),
+        parseFloat(req.body.sealevelpressure),
+        parseFloat(req.body.severrisk),
+        parseFloat(req.body.years),
+        parseFloat(req.body.month),
+        parseFloat(req.body.month_sin),
+        parseFloat(req.body.month_cos),
+        parseFloat(req.body.sunrise_hour)
+    ]
+    const scaled_features = input_features.map(feature, index => (feature, mean_values[index]) / std_values[index]);
+
+    let logit_p = intercept; 
+    for (let i = 0; i < theta_values.length; i++) {
+    logit_p += scaled_features[i] * theta_values[i];
+    };
+
+    const probability = 1 / (1 + Math.exp(-logit_p));
+    const probabilityOfRain = probability > 0.5 ? 'Yes' : 'No';
+
+    res.render("result.ejs", {
+        logit_p: logit_p.toFixed(4),
+        probability: (probability * 100).toFixed(2),
+        probabilityOfRain: probabilityOfRain,
+
+    })
+});
+
 
 
 
