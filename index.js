@@ -64,7 +64,7 @@ app.post("/contact", (req, res) => {
     res.render("contact.ejs", {
         name,
         email,
-        message: "✅ Thank you! We received your message and will get back to you soon."
+        message: "✅ Thank you! We received your message and will get back to you soon.",
     });
 });
 
@@ -231,6 +231,9 @@ const std_values = [
     0.81198844, 0.67704837, 0.66623016, 0.83351691, 0.66249823, 0.57852318,
  0.51720325, 0.51675202, 0.48375309,
 ]
+app.get("/predict", (res, req) => {
+    res.render("predict.ejs");
+});
 
 app.post("/predict", (req, res) => {
     const input_features = [
@@ -258,7 +261,6 @@ app.post("/predict", (req, res) => {
         logit_p: logit_p.toFixed(4),
         probability: (probability * 100).toFixed(2),
         probabilityOfRain: probabilityOfRain,
-
     })
 });
 

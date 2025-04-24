@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <style>
+        /* Custom Styles for Footer */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            color: white;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-left a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-left svg {
+            width: 35px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .footer-left span {
+            font-size: 14px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .footer-social a {
+            margin-left: 20px;
+        }
+
+        .footer-social img {
+            width: 30px;
+            height: 30px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .footer-social {
+                justify-content: center;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Footer Section -->
+    <section class="gradient-background">
+        <div class="footer-container">
+            <footer>
+                <div class="footer-left">
+                    <a href="/" class="mb-3 me-2 text-body-secondary text-decoration-none lh-1">
+                        <svg class="bi" width="35" height="30">
+                            <use xlink:href="#bootstrap"></use>
+                        </svg>
+                    </a>
+                    <span>© <script>document.write(new Date().getFullYear());</script> AMS Weather Prediction, inc</span>
+                </div>
+
+                <div class="footer-social">
+                    <a href="https://twitter.com">
+                        <img src="images/twitter-x.svg" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com">
+                        <img src="images/instagram.svg" alt="Instagram">
+                    </a>
+                    <a href="https://facebook.com">
+                        <img src="images/facebook.svg" alt="Facebook">
+                    </a>
+                </div>
+            </footer>
+        </div>
+    </section>
+
+</body>
+</html>
