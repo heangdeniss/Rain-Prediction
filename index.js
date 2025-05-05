@@ -210,6 +210,10 @@ app.get("/about", (req, res) => {
     res.render("about.ejs");
 });
 
+app.get("/learnmore", (req, res) => {
+    res.render("learnmore.ejs");
+})
+
 /// Logistic regression prediction not yet decision
 const intercept = 2.21196444;
 const theta_values = [
@@ -263,10 +267,9 @@ app.post("/predict", (req, res) => {
         probabilityOfRain: probabilityOfRain,
     })
 });
-
-
-
-
+app.get('/services', (req, res) => {
+    res.render('service', { services: services });
+  });
 
 app.listen(port, () => {
     console.log(`our sever is cooking at Port ${port}`);

@@ -1,13 +1,16 @@
+html {
+    background-image: url(/images/pexels-pixabay-209831.jpg);
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: white;
-    background-color: black; /* Grey background */
+    background-image: url(/images/pexels-pixabay-209831.jpg);
 }
 
 /* Header Section */
 .header {
-    background: linear-gradient(135deg, #333);
     padding: 3rem 1rem;
     text-align: center;
 }
@@ -30,8 +33,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 3rem 1rem;
-    background: black; /* Slightly darker grey for contrast */
-    color: white; /* White text */
+    color: white;
 }
 
 .about-image {
@@ -61,7 +63,6 @@ body {
 
 /* Our Values Section */
 .values {
-    background: black; /* Slightly darker grey */
     padding: 3rem 1rem;
     text-align: center;
     color: white;
@@ -83,7 +84,6 @@ body {
 /* Our Team Section */
 .team-section {
     padding: 3rem 1rem;
-    background: black; /* Matches About Section */
     text-align: center;
 }
 
@@ -141,7 +141,6 @@ margin: 2rem 0;
 
 /* Footer */
 .footer {
-    background: black;
     text-align: center;
     padding: 1rem;
     font-size: 0.9rem;

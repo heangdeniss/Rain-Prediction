@@ -1,5 +1,5 @@
 #register {
-    background-color: #111;
+    background-image: url(/images/pexels-pixabay-209831.jpg);
     color: #fff;
     padding: 5rem 2rem;
     text-align: center;
@@ -83,5 +83,5 @@
 }
 
 body {
-    background-color: #111;
+    background-image: url(/images/pexels-pixabay-209831.jpg);
 }

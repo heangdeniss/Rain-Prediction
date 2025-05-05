@@ -53,11 +53,18 @@
             width: 30px;
             height: 30px;
         }
+        .condition a{
+            display: relative;
+            align-items: center;
+            margin-top: 10px;
+        }
 
         @media screen and (max-width: 768px) {
             .footer-social {
                 justify-content: center;
-                margin-top: 10px;
+                margin: 10px;
+                gap: 20px;
+                padding: 10px;
             }
         }
     </style>
@@ -65,7 +72,7 @@
 <body>
 
     <!-- Footer Section -->
-    <section class="gradient-background">
+    <section>
         <div class="footer-container">
             <footer>
                 <div class="footer-left">
@@ -73,7 +80,7 @@
                         <svg class="bi" width="35" height="30">
                             <use xlink:href="#bootstrap"></use>
                         </svg>
-                    </a>
+                    </a style="background-image: url(/images/pexels-pixabay-209831.jpg);">
                     <span>© <script>document.write(new Date().getFullYear());</script> AMS Weather Prediction, inc</span>
                 </div>
 
@@ -87,6 +94,14 @@
                     <a href="https://facebook.com">
                         <img src="images/facebook.svg" alt="Facebook">
                     </a>
+                    <a href="https://discord.com">
+                        <img src="images/discord.svg" alt="discord">
+                    </a>
+                    
+                </div>
+                <div class="condition">
+                    <a href="#">Private Policy</a>
+                    <a href="#">Term of Use</a>
                 </div>
             </footer>
         </div>
