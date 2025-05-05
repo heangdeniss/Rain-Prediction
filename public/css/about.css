@@ -1,116 +1,148 @@
-/* About Us Page Styles */
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(to bottom, #000000, #333333);
-    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background-color: black; /* Grey background */
 }
 
-/* Container for the first section */
-.first {
+/* Header Section */
+.header {
+    background: linear-gradient(135deg, #333);
+    padding: 3rem 1rem;
     text-align: center;
-    padding: 50px 20px;
 }
 
-/* Heading Styles */
-.first h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #FFD700;  /* Gold color for the heading */
+.header h1 {
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Image Styles */
-.first img {
-    width: 80%;
+.header p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    background: black; /* Slightly darker grey for contrast */
+    color: white; /* White text */
+}
+
+.about-image {
+    width: 40%;
+    max-width: 400px;
+    margin: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
     max-width: 600px;
-    height: auto;
-    margin-top: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 1rem;
 }
 
-/* Paragraph Styles */
-.first p {
-    font-size: 1.2em;
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ff914d; /* Highlighted orange */
+}
+
+.about-text p {
+    line-height: 1.8;
+    font-size: 1.2rem;
+}
+
+/* Our Values Section */
+.values {
+    background: black; /* Slightly darker grey */
+    padding: 3rem 1rem;
+    text-align: center;
+    color: white;
+}
+
+.values h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ff914d;
+}
+
+.values p {
+    font-size: 1.2rem;
     max-width: 800px;
-    margin: 30px auto;
-    line-height: 1.6;
-    color: #dcdcdc; /* Light gray text */
+    margin: 0 auto 2rem;
+    line-height: 1.8;
 }
 
-/* Second section */
-.second {
-    background-color: #2C3E50;
-    padding: 50px 20px;
+/* Our Team Section */
+.team-section {
+    padding: 3rem 1rem;
+    background: black; /* Matches About Section */
     text-align: center;
 }
 
-/* If you add more content here, you can style it like this */
-.second p {
-    font-size: 1.2em;
-    max-width: 800px;
-    margin: 30px auto;
-    color: #ecf0f1; /* Light color text */
+.team-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ff914d;
 }
 
-        /* Our Values Section */
-        .values {
-            background: #555; /* Slightly darker grey */
-            padding: 3rem 1rem;
-            text-align: center;
-            color: white;
-        }
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
 
-        .values h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ff914d;
-        }
+.team-member {
+    text-align: center;
+    width: 200px;
+}
 
-        .values p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            line-height: 1.8;
-        }
+.team-member img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
 
-        /* Our Team Section */
-        .team-section {
-            padding: 3rem 1rem;
-            background: #444; /* Matches About Section */
-            text-align: center;
-        }
+.team-member h3 {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
 
-        .team-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #ff914d;
-        }
+.team-member p {
+    font-size: 1rem;
+}
 
-        .team-members {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
+/* Back Home Button */
+.button-container {
+text-align: center;
+margin: 2rem 0;
+}
 
-        .team-member {
-            text-align: center;
-            width: 200px;
-        }
+.btn {
+    display: inline-block;
+    background: #ff914d;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin: 0 1rem;
+}
 
-        .team-member img {
-            width: 100%;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .team-member h3 {
-            margin-top: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .team-member p {
-            font-size: 1rem;
-        }
+/* Footer */
+.footer {
+    background: black;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+}

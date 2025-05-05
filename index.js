@@ -267,6 +267,7 @@ app.post("/predict", (req, res) => {
 
 
 
+
 app.listen(port, () => {
-    console.log(`Chills diddy sever is cooking at Port ${port}`);
+    console.log(`our sever is cooking at Port ${port}`);
 });

@@ -15,5 +15,14 @@
   "keywords": [],
   "author": "deniss on the mix",
   "license": "ISC",
-  "description": ""
+  "description": "not finish yet, Im still cooking.",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heangdeniss/Rain-Prediction-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heangdeniss/Rain-Prediction-/issues"
+  },
+  "homepage": "https://github.com/heangdeniss/Rain-Prediction-#readme"
 }
