@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^1.9.0",
     "body-parser": "^2.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
@@ -16,7 +17,6 @@
   "author": "deniss on the mix",
   "license": "ISC",
   "description": "not finish yet, Im still cooking.",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/heangdeniss/Rain-Prediction-.git"

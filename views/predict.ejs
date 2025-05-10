@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rain Prediction</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Weather Prediction for Rain</h1>
+    <form action="/predict" method="POST">
+        <div>
+            <label for="feelslikenow">Feels Like Now:</label>
+            <input type="number" name="feelslikenow" id="feelslikenow" required>
+        </div>
+        <div>
+            <label for="precipcover">Precipitation Cover:</label>
+            <input type="number" name="precipcover" id="precipcover" required>
+        </div>
+        <div>
+            <label for="sealevelpressure">Sea Level Pressure:</label>
+            <input type="number" name="sealevelpressure" id="sealevelpressure" required>
+        </div>
+        <div>
+            <label for="surrounds">Surrounding Factors:</label>
+            <input type="number" name="surrounds" id="surrounds" required>
+        </div>
+        <div>
+            <label for="years">Years of Data:</label>
+            <input type="number" name="years" id="years" required>
+        </div>
+        <div>
+            <label for="month_cos">Month (Cosine):</label>
+            <input type="number" name="month_cos" id="month_cos" required>
+        </div>
+        <div>
+            <label for="month_sin">Month (Sine):</label>
+            <input type="number" name="month_sin" id="month_sin" required>
+        </div>
+        <div>
+            <label for="sunrise_hour">Sunrise Hour:</label>
+            <input type="number" name="sunrise_hour" id="sunrise_hour" required>
+        </div>
+        <button type="submit">Predict Rain</button>
+    </form>
+</body>
+</html>

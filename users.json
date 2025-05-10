@@ -31,5 +31,10 @@
     "password": "12345678$",
     "registrationDate": "2025-04-22T06:44:18.685Z",
     "verificationCode": 6658
+  },
+  "denis1@gmail.com": {
+    "name": "demnis",
+    "password": "12345678$",
+    "registrationDate": "2025-05-06T05:24:16.032Z"
   }
 }
